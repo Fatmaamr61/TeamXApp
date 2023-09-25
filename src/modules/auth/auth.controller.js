@@ -1,5 +1,6 @@
 import { asyncHandler } from "../../utils/asyncHandler.js";
 import { User } from "../../../DB/models/user.model.js";
+import { Token } from "../../../DB/models/token.model.js";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
 import { sendEmail } from "../../utils/sendEmail.js";
