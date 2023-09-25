@@ -11,7 +11,6 @@ import { connectionDB } from "../../../DB/connection.js";
 
 connectionDB();
 
-
 export const register = asyncHandler(async (req, res, next) => {
   // data from request
   const { firstName, lastName, email, password } = req.body;
@@ -216,7 +215,7 @@ export const deleteAccount = asyncHandler(async (req, res, next) => {
   let { token } = req.headers;
 
   // delete user
-  const user = await User.finDByIdAndDelete(id);
+  const user = await User.findByIdAndDelete(id);
 
   // delete token
   token = token.split(process.env.BEARER)[1];
