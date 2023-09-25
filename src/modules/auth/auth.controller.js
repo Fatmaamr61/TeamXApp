@@ -44,7 +44,7 @@ export const register = asyncHandler(async (req, res, next) => {
 
   // send response
   return isSent
-    ? res.json({ success: true, message: "please check your email" })
+    ? res.json({ success: true, message: "kindly check your email !!" })
     : next(new Error("something went wrong!"));
 });
 
