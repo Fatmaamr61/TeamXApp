@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import { appRouter } from "./src/appRouter.js";
+import { appRouter } from "./src/appRouter";
 import { connectionDB } from "./DB/connection.js";
 
 connectionDB();

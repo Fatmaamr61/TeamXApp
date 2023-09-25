@@ -6,7 +6,7 @@ import { sendEmail } from "../../utils/sendEmail.js";
 import { passwordResetTemplate, signUpTemp } from "../../utils/generateHTML.js";
 import jwt from "jsonwebtoken";import express from "express";
 import dotenv from "dotenv";
-import { appRouter } from "./src/appRouter.js";
+import { appRouter } from "./../../appRouter.js";
 import { connectionDB } from "./DB/connection.js";
 
 connectionDB();
