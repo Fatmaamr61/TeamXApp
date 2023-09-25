@@ -6,6 +6,10 @@ import { sendEmail } from "../../utils/sendEmail.js";
 import { passwordResetTemplate, signUpTemp } from "../../utils/generateHTML.js";
 import jwt from "jsonwebtoken";
 import randomstring from "randomstring";
+import { connectionDB } from "../../../DB/connection.js";
+
+connectionDB();
+
 
 export const register = asyncHandler(async (req, res, next) => {
   // data from request
