@@ -5,24 +5,6 @@ import crypto from "crypto";
 import { sendEmail } from "../../utils/sendEmail.js";
 import { passwordResetTemplate, signUpTemp } from "../../utils/generateHTML.js";
 import jwt from "jsonwebtoken";import express from "express";
-import dotenv from "dotenv";
-import { appRouter } from "./../../appRouter.js";
-import { connectionDB } from "../../../DB/connection.js";
-
-connectionDB();
-dotenv.config();
-
-const app = express();
-const port = process.env.PORT;
-
-// routing
-appRouter(app, express);
-app.listen(port, () => {
-  console.log(
-    `......................SERVER RUNNING ON PORT ${port}......................`
-  );
-});
-import { Token } from "../../../DB/models/token.model.js";
 import randomstring from "randomstring";
 
 export const register = asyncHandler(async (req, res, next) => {
