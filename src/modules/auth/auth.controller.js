@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import crypto from "crypto";
 import { sendEmail } from "../../utils/sendEmail.js";
 import { passwordResetTemplate, signUpTemp } from "../../utils/generateHTML.js";
-import jwt from "jsonwebtoken";import express from "express";
+import jwt from "jsonwebtoken";
 import randomstring from "randomstring";
 
 export const register = asyncHandler(async (req, res, next) => {
