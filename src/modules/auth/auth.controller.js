@@ -81,7 +81,7 @@ export const login = asyncHandler(async (req, res, next) => {
 
   // check is confrirmed
   if (!user.isConfirmed)
-    return next(new Error("un activated account!!", { cause: 400 }));
+    return next(new Error("unActivated account!!", { cause: 400 }));
 
   // check password
   const pass = bcrypt.compareSync(password, user.password);
@@ -115,7 +115,7 @@ export const changePassword = asyncHandler(async (req, res, next) => {
   const id = req.user._id;
 
   // find user
-  const user = await User.finDById(id);
+  const user = await User.findById(id);
 
   // check old password
   const pass = bcrypt.compareSync(oldPassword, user.password);
