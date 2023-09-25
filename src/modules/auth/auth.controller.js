@@ -13,7 +13,7 @@ connectionDB();
 
 export const register = asyncHandler(async (req, res, next) => {
   // data from request
-  const { firstName, lastName, email, password } = req.body;
+  const { firstName, lastName, email, password, phoneNumber } = req.body;
   console.log(req.body);
   // check user existance
   const isUser = await User.findOne({ email });
@@ -31,6 +31,7 @@ export const register = asyncHandler(async (req, res, next) => {
     firstName,
     lastName,
     email,
+    phoneNumber,
     password: hashPassword,
     activationCode,
   });

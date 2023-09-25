@@ -21,8 +21,6 @@ export const registerSchema = joi
       .required(),
     phoneNumber: joi
       .string()
-      .regex(/^(\+201|01|00201)[0-2,5]{1}[0-9]{8}$/)
-      .message("Invalid phone number format!")
       .required(),
   })
   .required();
