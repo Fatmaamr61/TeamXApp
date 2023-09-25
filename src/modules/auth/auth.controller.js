@@ -1,17 +1,34 @@
 import { asyncHandler } from "../../utils/asyncHandler.js";
-import { User } from "../../../db/models/user.model.js";
+import { User } from "../../../DB/models/user.model.js";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
 import { sendEmail } from "../../utils/sendEmail.js";
 import { passwordResetTemplate, signUpTemp } from "../../utils/generateHTML.js";
-import jwt from "jsonwebtoken";
-import { Token } from "../../../db/models/token.model.js";
+import jwt from "jsonwebtoken";import express from "express";
+import dotenv from "dotenv";
+import { appRouter } from "./src/appRouter.js";
+import { connectionDB } from "./DB/connection.js";
+
+connectionDB();
+dotenv.config();
+
+const app = express();
+const port = process.env.PORT;
+
+// routing
+appRouter(app, express);
+app.listen(port, () => {
+  console.log(
+    `......................SERVER RUNNING ON PORT ${port}......................`
+  );
+});
+import { Token } from "../../../DB/models/token.model.js";
 import randomstring from "randomstring";
 
 export const register = asyncHandler(async (req, res, next) => {
   // data from request
   const { firstName, lastName, email, password } = req.body;
-    console.log(req.body);
+  console.log(req.body);
   // check user existance
   const isUser = await User.findOne({ email });
   if (isUser)
@@ -111,7 +128,7 @@ export const changePassword = asyncHandler(async (req, res, next) => {
   const id = req.user._id;
 
   // find user
-  const user = await User.findById(id);
+  const user = await User.finDById(id);
 
   // check old password
   const pass = bcrypt.compareSync(oldPassword, user.password);
@@ -144,7 +161,7 @@ export const sendForgetCode = asyncHandler(async (req, res, next) => {
     charset: "numeric",
   });
 
-  // save code in db
+  // save code in DB
   user.forgetCode = code;
   await user.save();
 
@@ -212,7 +229,7 @@ export const deleteAccount = asyncHandler(async (req, res, next) => {
   let { token } = req.headers;
 
   // delete user
-  const user = await User.findByIdAndDelete(id);
+  const user = await User.finDByIdAndDelete(id);
 
   // delete token
   token = token.split(process.env.BEARER)[1];

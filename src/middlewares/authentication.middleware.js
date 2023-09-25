@@ -1,5 +1,5 @@
-import { User } from "../../db/models/user.model.js";
-import { Token } from "../../db/models/token.model.js";
+import { User } from "../../DB/models/user.model.js";
+import { Token } from "../../DB/models/token.model.js";
 import jwt from "jsonwebtoken";
 import { asyncHandler } from "../utils/asyncHandler.js";
 
